@@ -5,7 +5,8 @@ const { authenticateUser } = require("../middleware/auth-user");
 
 router.get("/users", authenticateUser, async (req, res) => {
   const user = req.currentUser;
-  res.json({
+
+  res.status(200).json({
     id: user.id,
     firstName: user.firstName,
     lastName: user.lastName,

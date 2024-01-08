@@ -60,7 +60,7 @@ console.log("Testing the connection to the database...");
 
     // Sync the models
     console.log("Synchronizing the models with the database...");
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
   } catch (error) {
     console.log(error);
   }
