@@ -4,6 +4,7 @@ const router = express.Router();
 const { authenticateUser } = require("../middleware/auth-user");
 
 router.get("/users", authenticateUser, async (req, res) => {
+  //get user from req body
   const user = req.currentUser;
 
   res.status(200).json({
