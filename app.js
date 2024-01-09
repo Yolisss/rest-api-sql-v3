@@ -4,8 +4,9 @@
 const express = require("express");
 const morgan = require("morgan");
 const sequelize = require("./models").sequelize;
-const userRoutes = require("./routes/user");
-//const models = require("./routes");
+//const userRoutes = require("./routes/user");
+//const courseRoutes = require("./routes/courses");
+const routes = require("./routes");
 
 // variable to enable global error logging
 const enableGlobalErrorLogging =
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api", userRoutes);
+app.use("/api", routes);
 
 // send 404 if no other route matched
 app.use((req, res) => {

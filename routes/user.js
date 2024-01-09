@@ -1,4 +1,6 @@
-const User = require("../models").User;
+"use strict";
+
+const { User } = require("../models");
 const express = require("express");
 const router = express.Router();
 const { authenticateUser } = require("../middleware/auth-user");
@@ -6,7 +8,6 @@ const { authenticateUser } = require("../middleware/auth-user");
 router.get("/users", authenticateUser, async (req, res) => {
   //get user from req body
   const user = req.currentUser;
-
   res.status(200).json({
     id: user.id,
     firstName: user.firstName,
