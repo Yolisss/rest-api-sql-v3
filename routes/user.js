@@ -3,9 +3,9 @@
 const { User } = require("../models");
 const express = require("express");
 const router = express.Router();
-const { authenticateUser } = require("../middleware/auth-user");
+const { authenticateUser } = require("../middleware/auth");
 
-router.get("/users", authenticateUser, async (req, res) => {
+router.get("/", authenticateUser, async (req, res) => {
   //get user from req body
   const user = req.currentUser;
   res.status(200).json({
@@ -17,7 +17,7 @@ router.get("/users", authenticateUser, async (req, res) => {
 });
 
 // Route that creates a new user.
-router.post("/users", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     await User.create(req.body);
     //set location header
