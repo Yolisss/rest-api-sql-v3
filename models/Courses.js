@@ -29,6 +29,12 @@ module.exports = (sequelize) => {
           },
         },
       },
+      estimatedTime: {
+        type: Sequelize.STRING,
+      },
+      materialsNeeded: {
+        type: Sequelize.STRING,
+      },
     },
     { sequelize }
   );

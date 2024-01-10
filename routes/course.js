@@ -8,7 +8,13 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
   try {
     const courses = await Course.findAll({
-      attributes: ["title", "description", "estimatedTime", "materialsNeeded"],
+      attributes: [
+        "id",
+        "title",
+        "description",
+        "estimatedTime",
+        "materialsNeeded",
+      ],
       include: [
         {
           model: User,
