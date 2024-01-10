@@ -61,9 +61,13 @@ router.get("/:id", async (req, res, next) => {
 
 // Route that creates a new user.
 router.post("/", authenticateUser, async (req, res) => {
+  let newCourse;
   try {
-    await Course.create(req.body);
-    res.status(201).location("/").end();
+    newCourse = await Course.create(req.body);
+    res
+      .status(201)
+      .location("/" + newCourse.id)
+      .end();
   } catch (error) {
     if (
       error.name === "SequelizeValidationError" ||
