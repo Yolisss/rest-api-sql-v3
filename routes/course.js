@@ -1,7 +1,6 @@
 const express = require("express");
 const { Course, User } = require("../models");
 const { authenticateUser } = require("../middleware/auth");
-const auth = require("basic-auth");
 
 const router = express.Router();
 
@@ -55,7 +54,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 // Route that creates a new user.
-router.post("/", async (req, res) => {
+router.post("/", authenticateUser, async (req, res) => {
   try {
     await Course.create(req.body);
     res.status(201).json({ message: "Account successfully created!" });
@@ -67,7 +66,7 @@ router.post("/", async (req, res) => {
       const errors = error.errors.map((err) => err.message);
       res.status(400).json({ errors });
     } else {
-      throw error;
+      next(error);
     }
   }
 });

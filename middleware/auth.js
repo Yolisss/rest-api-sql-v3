@@ -14,6 +14,7 @@ exports.authenticateUser = async (req, res, next) => {
       where: { emailAddress: credentials.name },
     });
 
+    //if user exists in db
     if (user) {
       const authenticated = bcrypt.compareSync(credentials.pass, user.password);
       if (authenticated) {

@@ -5,7 +5,7 @@ const express = require("express");
 const morgan = require("morgan");
 const sequelize = require("./models").sequelize;
 const userRoutes = require("./routes/user");
-const courseRoutes = require("./routes/courses");
+const courseRoutes = require("./routes/course");
 //const models = require("./routes");
 
 // variable to enable global error logging
