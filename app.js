@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const sequelize = require("./models").sequelize;
 const userRoutes = require("./routes/user");
 const courseRoutes = require("./routes/course");
+const cors = require("cors");
 //const models = require("./routes");
 
 // variable to enable global error logging
@@ -19,6 +20,9 @@ const app = express();
 app.use(morgan("dev"));
 
 app.use(express.json());
+
+//Enable All Cors Requests
+app.use(cors());
 
 // setup a friendly greeting for the root route
 app.get("/", (req, res) => {
